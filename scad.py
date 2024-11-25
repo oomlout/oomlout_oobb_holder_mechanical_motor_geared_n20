@@ -56,7 +56,19 @@ def make_scad(**kwargs):
 
         part = copy.deepcopy(part)
         p3 = copy.deepcopy(part["kwargs"])
+        p3["extra"] = "clearance_cutout"
+        part["kwargs"] = p3        
+        parts.append(part)
+
+        part = copy.deepcopy(part)
+        p3 = copy.deepcopy(part["kwargs"])
         p3["thickness"] = 30
+        part["kwargs"] = p3        
+        parts.append(part)
+
+        part = copy.deepcopy(part)
+        p3 = copy.deepcopy(part["kwargs"])
+        p3["extra"] = "clearance_cutout"
         part["kwargs"] = p3        
         parts.append(part)
 
@@ -185,10 +197,33 @@ def get_base(thing, **kwargs):
 
 
     #add cutout for motor
-    if extra == "":
+    if extra == "" or extra == "clearance_cutout":
         thing = add_mechanical_motor_geared_n20(thing, **kwargs)
     elif extra == "holder":
         thing = add_mechanical_motor_geared_n20_holder(thing, **kwargs)
+    
+    if extra == "clearance_cutout":
+        p3 = copy.deepcopy(kwargs)
+        p3["type"] = "n"
+        p3["shape"] = f"oobb_cube"
+        w = 12
+        h = 14
+        d = 6
+        p3["size"] = [w,h,d]
+        #p3["m"] = "#"
+        pos1 = copy.deepcopy(pos)
+        pos1[0] += -16
+        pos1[2] += depth
+        pos2 = copy.deepcopy(pos)
+        pos2[0] += 16
+        pos2[2] += depth
+        poss = []
+        poss.append(pos1)
+        poss.append(pos2)
+        p3["pos"] = poss
+        p3["zz"] = "top"
+        oobb_base.append_full(thing,**p3)
+
 
     #add extra cutout if deep
     if depth > 12:

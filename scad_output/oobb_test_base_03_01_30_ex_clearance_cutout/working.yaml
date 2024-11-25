@@ -7,11 +7,12 @@ full_shift:
 - 0
 - 0
 kwargs:
-  height: 3
+  extra: clearance_cutout
+  height: 1
   modes:
   - 3dpr
   overwrite: true
-  save_type: none
+  save_type: all
   thickness: 30
   type: test_base
   width: 3
