@@ -235,7 +235,7 @@ def get_base(thing, **kwargs):
         h = 11
         if height == 3:
             h = 22
-        d = depth - 6
+        d = depth - 8
         p3["size"] = [w,h,d]
         #p3["m"] = "#"
         pos1 = copy.deepcopy(pos)
