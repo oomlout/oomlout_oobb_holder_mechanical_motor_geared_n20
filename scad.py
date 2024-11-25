@@ -17,7 +17,7 @@ def make_scad(**kwargs):
         #filter = "test"
 
         kwargs["save_type"] = "none"
-        #kwargs["save_type"] = "all"
+        kwargs["save_type"] = "all"
         
         navigation = False
         #navigation = True    
@@ -31,9 +31,9 @@ def make_scad(**kwargs):
     # default variables
     if True:
         kwargs["size"] = "oobb"
-        kwargs["width"] = 1
+        kwargs["width"] = 3
         kwargs["height"] = 1
-        kwargs["thickness"] = 3
+        kwargs["thickness"] = 12
         
     # project_variables
     if True:
@@ -85,6 +85,7 @@ def get_base(thing, **kwargs):
     depth = kwargs.get("thickness", 3)                    
     rot = kwargs.get("rot", [0, 0, 0])
     pos = kwargs.get("pos", [0, 0, 0])
+    extra = kwargs.get("extra", "")
     #pos = copy.deepcopy(pos)
     #pos[2] += -20
 
@@ -105,11 +106,68 @@ def get_base(thing, **kwargs):
     p3["shape"] = f"oobb_holes"
     p3["both_holes"] = True  
     p3["depth"] = depth
-    p3["holes"] = "perimeter"
+    if height == 1:
+        p3["holes"] = ["top","bottom"]
+    else:
+        p3["holes"] = "perimeter"
     #p3["m"] = "#"
     pos1 = copy.deepcopy(pos)         
     p3["pos"] = pos1
     oobb_base.append_full(thing,**p3)
+
+
+    #add cutout for motor
+    if extra == "":
+        positions = []
+        positions.append([4.5,0,0])
+        positions.append([-4.5,0,0])
+
+        for position in positions:
+            #add screw_countersunk
+            p3 = copy.deepcopy(kwargs)
+            p3["type"] = "n"
+            p3["shape"] = f"oobb_screw_countersunk"
+            p3["radius_name"] = "m1_6"
+            depth_screw_connector = 4
+            p3["depth"] = depth_screw_connector
+            p3["m"] = "#"        
+            pos1 = copy.deepcopy(pos)
+            pos1[0] += position[0]
+            pos1[1] += position[1]
+            pos1[2] += position[2] + depth
+            p3["pos"] = pos1
+            p3["zz"] = "top"
+            oobb_base.append_full(thing,**p3)
+
+        #add motor cutout
+        p3 = copy.deepcopy(kwargs)
+        p3["type"] = "n"
+        p3["shape"] = f"oobb_cube"
+        ex = 2
+        w = 12 + ex
+        h = 9
+        flange_thickness = 1.5
+        d = depth - depth_screw_connector + flange_thickness
+        p3["size"] = [w,h,d]
+        p3["m"] = "#"
+        pos1 = copy.deepcopy(pos)
+        pos1[0] += 0
+        pos1[1] += 0
+        pos1[2] += 0
+        p3["pos"] = pos1
+        oobb_base.append_full(thing,**p3)
+
+
+        #add hole in middle
+        p3 = copy.deepcopy(kwargs)
+        p3["type"] = "n"
+        p3["shape"] = f"oobb_hole"
+        p3["radius_name"] = "m4"
+        p3["depth"] = depth
+        p3["m"] = "#"
+        pos1 = copy.deepcopy(pos)
+        p3["pos"] = pos1
+        oobb_base.append_full(thing,**p3)
 
     if prepare_print:
         #put into a rotation object
