@@ -265,7 +265,7 @@ def add_mechanical_motor_geared_n20(thing, **kwargs):
         p3["shape"] = f"oobb_cube"
         ex = 2
         w = 12 + ex
-        h = 9
+        h = 9 + ex
         flange_thickness = 1.5
         d = depth - depth_screw_connector + flange_thickness
         p3["size"] = [w,h,d]
