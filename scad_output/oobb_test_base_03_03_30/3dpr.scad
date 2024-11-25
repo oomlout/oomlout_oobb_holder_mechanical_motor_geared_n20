@@ -5,21 +5,21 @@ difference() {
 	union() {
 		hull() {
 			translate(v = [-17.0000000000, 17.0000000000, 0]) {
-				cylinder(h = 12, r = 5);
+				cylinder(h = 30, r = 5);
 			}
 			translate(v = [17.0000000000, 17.0000000000, 0]) {
-				cylinder(h = 12, r = 5);
+				cylinder(h = 30, r = 5);
 			}
 			translate(v = [-17.0000000000, -17.0000000000, 0]) {
-				cylinder(h = 12, r = 5);
+				cylinder(h = 30, r = 5);
 			}
 			translate(v = [17.0000000000, -17.0000000000, 0]) {
-				cylinder(h = 12, r = 5);
+				cylinder(h = 30, r = 5);
 			}
 		}
 	}
 	union() {
-		translate(v = [4.5000000000, 0, 12]) {
+		translate(v = [4.5000000000, 0, 30]) {
 			rotate(a = [0, 0, 0]) {
 				difference() {
 					union() {
@@ -40,7 +40,7 @@ difference() {
 				}
 			}
 		}
-		translate(v = [-4.5000000000, 0, 12]) {
+		translate(v = [-4.5000000000, 0, 30]) {
 			rotate(a = [0, 0, 0]) {
 				difference() {
 					union() {
@@ -230,8 +230,14 @@ difference() {
 			cylinder(h = 200, r = 1.8000000000);
 		}
 		translate(v = [-7.0000000000, -5.5000000000, 0]) {
-			cube(size = [14, 11, 9.5000000000]);
+			cube(size = [14, 11, 27.5000000000]);
 		}
-		cylinder(h = 12, r = 2.2500000000);
+		cylinder(h = 30, r = 2.2500000000);
+		translate(v = [-11.0000000000, -11.0000000000, 0]) {
+			cube(size = [22, 22, 24]);
+		}
+		translate(v = [-1.5000000000, -22.5000000000, 0]) {
+			cube(size = [3, 45, 3]);
+		}
 	}
 }
