@@ -206,16 +206,16 @@ def get_base(thing, **kwargs):
         p3 = copy.deepcopy(kwargs)
         p3["type"] = "n"
         p3["shape"] = f"oobb_cube"
-        w = 12
+        w = 14
         h = 14
         d = 6
         p3["size"] = [w,h,d]
         #p3["m"] = "#"
         pos1 = copy.deepcopy(pos)
-        pos1[0] += -16
+        pos1[0] += -15
         pos1[2] += depth
         pos2 = copy.deepcopy(pos)
-        pos2[0] += 16
+        pos2[0] += 15
         pos2[2] += depth
         poss = []
         poss.append(pos1)
