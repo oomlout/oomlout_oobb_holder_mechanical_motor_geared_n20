@@ -396,7 +396,7 @@ def add_mechanical_motor_geared_n20(thing, **kwargs):
         extra = kwargs.get("extra", "")
         width = kwargs.get("width", 1)
         
-        if "m3_hardware" not in extra:
+        if width != 2:
             positions.append([4.5,0,0])
             positions.append([-4.5,0,0])
         else:

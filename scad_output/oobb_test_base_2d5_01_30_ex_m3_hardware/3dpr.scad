@@ -63,7 +63,7 @@ difference() {
 				}
 			}
 		}
-		translate(v = [0, 4.5000000000, 30]) {
+		translate(v = [4.5000000000, 0, 30]) {
 			rotate(a = [0, 0, 0]) {
 				difference() {
 					union() {
@@ -84,7 +84,7 @@ difference() {
 				}
 			}
 		}
-		translate(v = [0, -4.5000000000, 30]) {
+		translate(v = [-4.5000000000, 0, 30]) {
 			rotate(a = [0, 0, 0]) {
 				difference() {
 					union() {
