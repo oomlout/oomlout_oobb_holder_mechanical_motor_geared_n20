@@ -1,0 +1,148 @@
+parts:
+  oobb_oomlout_oobb_holder_mechanical_motor_geared_n20_base_03_01_12:
+    full_rotations:
+    - 0
+    - 0
+    - 0
+    full_shift:
+    - 0
+    - 0
+    - 0
+    kwargs:
+      height: 1
+      modes:
+      - 3dpr
+      overwrite: true
+      save_type: all
+      thickness: 12
+      type: oomlout_oobb_holder_mechanical_motor_geared_n20_base
+      width: 3
+    name: base
+    project_name: oomlout_oobb_holder_mechanical_motor_geared_n20
+  oobb_oomlout_oobb_holder_mechanical_motor_geared_n20_base_03_01_12_ex_clearance_cutout:
+    full_rotations:
+    - 0
+    - 0
+    - 0
+    full_shift:
+    - 0
+    - 0
+    - 0
+    kwargs:
+      extra: clearance_cutout
+      height: 1
+      modes:
+      - 3dpr
+      overwrite: true
+      save_type: all
+      thickness: 12
+      type: oomlout_oobb_holder_mechanical_motor_geared_n20_base
+      width: 3
+    name: base
+    project_name: oomlout_oobb_holder_mechanical_motor_geared_n20
+  oobb_oomlout_oobb_holder_mechanical_motor_geared_n20_base_03_01_30_ex_clearance_cutout:
+    full_rotations:
+    - 0
+    - 0
+    - 0
+    full_shift:
+    - 0
+    - 0
+    - 0
+    kwargs:
+      extra: clearance_cutout
+      height: 1
+      modes:
+      - 3dpr
+      overwrite: true
+      save_type: all
+      thickness: 30
+      type: oomlout_oobb_holder_mechanical_motor_geared_n20_base
+      width: 3
+    name: base
+    project_name: oomlout_oobb_holder_mechanical_motor_geared_n20
+  oobb_oomlout_oobb_holder_mechanical_motor_geared_n20_base_03_03_12:
+    full_rotations:
+    - 0
+    - 0
+    - 0
+    full_shift:
+    - 0
+    - 0
+    - 0
+    kwargs:
+      height: 3
+      modes:
+      - 3dpr
+      overwrite: true
+      save_type: all
+      thickness: 12
+      type: oomlout_oobb_holder_mechanical_motor_geared_n20_base
+      width: 3
+    name: base
+    project_name: oomlout_oobb_holder_mechanical_motor_geared_n20
+  oobb_oomlout_oobb_holder_mechanical_motor_geared_n20_base_03_03_30:
+    full_rotations:
+    - 0
+    - 0
+    - 0
+    full_shift:
+    - 0
+    - 0
+    - 0
+    kwargs:
+      height: 3
+      modes:
+      - 3dpr
+      overwrite: true
+      save_type: all
+      thickness: 30
+      type: oomlout_oobb_holder_mechanical_motor_geared_n20_base
+      width: 3
+    name: base
+    project_name: oomlout_oobb_holder_mechanical_motor_geared_n20
+  oobb_oomlout_oobb_holder_mechanical_motor_geared_n20_base_03_03_3d7_ex_holder:
+    full_rotations:
+    - 0
+    - 0
+    - 0
+    full_shift:
+    - 0
+    - 0
+    - 0
+    kwargs:
+      extra: holder
+      height: 3
+      modes:
+      - 3dpr
+      overwrite: true
+      save_type: all
+      thickness: 3.7
+      type: oomlout_oobb_holder_mechanical_motor_geared_n20_base
+      width: 3
+    name: base
+    project_name: oomlout_oobb_holder_mechanical_motor_geared_n20
+  oobb_oomlout_oobb_holder_mechanical_motor_geared_n20_base_2d5_01_30_ex_m3_hardware:
+    full_rotations:
+    - 0
+    - 0
+    - 0
+    full_shift:
+    - 0
+    - 0
+    - 0
+    kwargs:
+      extra: m3_hardware
+      height: 1
+      modes:
+      - 3dpr
+      overwrite: true
+      save_type: all
+      thickness: 30
+      type: oomlout_oobb_holder_mechanical_motor_geared_n20_base
+      width: 2.5
+    name: base
+    project_name: oomlout_oobb_holder_mechanical_motor_geared_n20
+project_id: oomlout_oobb_holder_mechanical_motor_geared_n20
+project_name: Oomlout oobb holder mechanical motor geared n20
+project_repo: https://github.com/oomlout/oomlout_oobb_holder_mechanical_motor_geared_n20
