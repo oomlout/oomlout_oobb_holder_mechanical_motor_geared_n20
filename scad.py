@@ -14,10 +14,10 @@ def make_scad(**kwargs):
     # save_type variables
     if True:
         filter = ""
-        #filter = "test"
+        #filter = "holder"
 
         kwargs["save_type"] = "none"
-        #kwargs["save_type"] = "all"
+        kwargs["save_type"] = "all"
         
         navigation = False
         #navigation = True    
@@ -43,7 +43,7 @@ def make_scad(**kwargs):
     if True:
 
         part_default = {} 
-        part_default["project_name"] = "test" ####### neeeds setting
+        part_default["project_name"] = "oomlout_oobb_holder_mechanical_motor_geared_n20" ####### neeeds setting
         part_default["full_shift"] = [0, 0, 0]
         part_default["full_rotations"] = [0, 0, 0]
         
@@ -129,7 +129,8 @@ def make_scad(**kwargs):
     if True:
         for part in parts:
             name = part.get("name", "default")
-            if filter in name:
+            extra = part["kwargs"].get("extra", "")
+            if filter in name or filter in extra:
                 print(f"making {part['name']}")
                 make_scad_generic(part)            
                 print(f"done {part['name']}")
@@ -270,7 +271,8 @@ def get_base(thing, **kwargs):
         thing = add_mechanical_motor_geared_n20(thing, **kwargs)
     elif extra == "holder":
         thing = add_mechanical_motor_geared_n20_holder(thing, **kwargs)
-    
+        prepare_print = True
+
     if extra == "clearance_cutout":
         p3 = copy.deepcopy(kwargs)
         p3["type"] = "n"
@@ -339,6 +341,7 @@ def get_base(thing, **kwargs):
         return_value_2["typetype"]  = "p"
         pos1 = copy.deepcopy(pos)
         pos1[0] += 50
+        pos1[2] += depth*2
         return_value_2["pos"] = pos1
         return_value_2["rot"] = [180,0,0]
         return_value_2["objects"] = components_second
@@ -351,6 +354,9 @@ def get_base(thing, **kwargs):
         p3["type"] = "n"
         p3["shape"] = f"oobb_slice"
         #p3["m"] = "#"
+        pos1 = copy.deepcopy(pos)
+        pos1[2] += depth
+        p3["pos"] = pos1
         oobb_base.append_full(thing,**p3)
 
 def add_mechanical_motor_geared_n20_holder(thing, **kwargs):
@@ -361,7 +367,8 @@ def add_mechanical_motor_geared_n20_holder(thing, **kwargs):
     depth = kwargs.get("thickness", 3)
     extra = kwargs.get("extra", "")
 
-    position_holder = [0,-22,0]
+    position_holder = [0,-22,0] # front edge position
+    
     #add screw_countersunk
     p3 = copy.deepcopy(kwargs)
     p3["type"] = "n"
@@ -371,11 +378,13 @@ def add_mechanical_motor_geared_n20_holder(thing, **kwargs):
     p3["m"] = "#"
     pos1 = copy.deepcopy(pos)
     pos1[0] += position_holder[0] + 13.5
-    pos1[1] += position_holder[1] + 10
+    #pos1[1] += position_holder[1] + 10 #if screws near front
+    pos1[1] += position_holder[1] + 15
     pos1[2] += position_holder[2] 
     pos2 = copy.deepcopy(pos)
     pos2[0] += position_holder[0] - 13.5
-    pos2[1] += position_holder[1] + 10
+    #pos2[1] += position_holder[1] + 10   #if screws near front
+    pos2[1] += position_holder[1] + 15
     pos2[2] += position_holder[2]
     poss = []
     poss.append(pos1)
@@ -385,6 +394,95 @@ def add_mechanical_motor_geared_n20_holder(thing, **kwargs):
     rot1[1] = 180    
     p3["rot"] = rot1
     oobb_base.append_full(thing,**p3)
+
+
+    #add the holder top piece
+    #oobb_plate 3x2
+    p3 = copy.deepcopy(kwargs)
+    p3["type"] = "p"
+    p3["shape"] = f"oobb_plate"
+    depth_extra_piece = 12
+    p3["depth"] = depth_extra_piece
+    p3["width"] = 3
+    p3["height"] = 1
+    #p3["m"] = "#"
+    pos1 = copy.deepcopy(pos)
+    pos1[1] += -15
+    pos1[2] += depth
+    p3["pos"] = pos1
+    oobb_base.append_full(thing,**p3)
+
+    p4 = copy.deepcopy(p3)
+    p4["width"] = 1 + 4/15
+    p4["height"] = 2
+    pos1 = copy.deepcopy(pos)
+    pos1[0] += 0
+    pos1[1] += -7.5
+    pos1[2] += depth
+    p4["pos"] = pos1
+    oobb_base.append_full(thing,**p4)
+
+    #add connecting oobb_screw_countersunk
+    p3 = copy.deepcopy(kwargs)
+    p3["type"] = "n"
+    p3["shape"] = f"oobb_screw_countersunk"
+    p3["radius_name"] = "m3"
+    p3["depth"] = depth + depth_extra_piece
+    p3["nut"] = True
+    p3["overhang"] = True
+    p3["m"] = "#"
+    shift_y = -15
+    shift_x = 15
+    pos1 = copy.deepcopy(pos)
+    pos1[0] += shift_x
+    pos1[1] += shift_y
+    pos1[2] += 0
+    pos2 = copy.deepcopy(pos)
+    pos2[0] += -shift_x
+    pos2[1] += shift_y
+    pos2[2] += 0
+    poss = []
+    poss.append(pos1)
+    poss.append(pos2)
+    p3["pos"] = poss
+    rot1 = copy.deepcopy(rot)
+    rot1[1] = 180
+    p3["rot"] = rot1
+    oobb_base.append_full(thing,**p3)
+
+    #add cutout for motor
+    p3 = copy.deepcopy(kwargs)
+    p3["type"] = "n"
+    p3["shape"] = f"oobb_cube"
+    w = 11
+    h = 24
+    d = 9
+    p3["size"] = [w,h,d]
+    p3["m"] = "#"
+    pos1 = copy.deepcopy(pos)
+    pos1[0] += 0
+    pos1[1] += -7.5 + 1
+    pos1[2] += depth
+    p3["pos"] = pos1
+    oobb_base.append_full(thing,**p3)
+
+    #slightly smaller to form a lip
+    p3 = copy.deepcopy(kwargs)
+    p3["type"] = "n"
+    p3["shape"] = f"oobb_cube"
+    w = 11-2
+    h = 29
+    d = 9-1
+    p3["size"] = [w,h,d]
+    p3["m"] = "#"
+    pos1 = copy.deepcopy(pos)
+    pos1[0] += 0
+    pos1[1] += -7.5
+    pos1[2] += depth
+    p3["pos"] = pos1
+    oobb_base.append_full(thing,**p3)
+
+
 
 
     return thing

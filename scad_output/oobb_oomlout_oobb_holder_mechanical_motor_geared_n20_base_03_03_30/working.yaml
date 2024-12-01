@@ -1,0 +1,19 @@
+full_rotations:
+- 0
+- 0
+- 0
+full_shift:
+- 0
+- 0
+- 0
+kwargs:
+  height: 3
+  modes:
+  - 3dpr
+  overwrite: true
+  save_type: none
+  thickness: 30
+  type: oomlout_oobb_holder_mechanical_motor_geared_n20_base
+  width: 3
+name: base
+project_name: oomlout_oobb_holder_mechanical_motor_geared_n20
