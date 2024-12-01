@@ -14,10 +14,10 @@ def make_scad(**kwargs):
     # save_type variables
     if True:
         #filter = ""
-        filter = "holder"
+        #filter = "holder"
 
         kwargs["save_type"] = "none"
-        kwargs["save_type"] = "all"
+        #kwargs["save_type"] = "all"
         
         navigation = False
         #navigation = True    
