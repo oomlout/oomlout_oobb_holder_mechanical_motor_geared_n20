@@ -415,7 +415,7 @@ def add_mechanical_motor_geared_n20_holder(thing, **kwargs):
     oobb_base.append_full(thing,**p3)
 
     p4 = copy.deepcopy(p3)
-    p4["width"] = 1 + 4/15
+    p4["width"] = 1 + 1/15
     p4["height"] = 2
     pos1 = copy.deepcopy(pos)
     pos1[0] += 0
