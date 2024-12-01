@@ -11,7 +11,7 @@ kwargs:
   modes:
   - 3dpr
   overwrite: true
-  save_type: all
+  save_type: none
   thickness: 12
   type: oomlout_oobb_holder_mechanical_motor_geared_n20_base
   width: 3
