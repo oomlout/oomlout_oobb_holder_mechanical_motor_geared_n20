@@ -491,7 +491,7 @@ def add_mechanical_motor_geared_n20_holder(thing, **kwargs):
     p3["type"] = "n"
     p3["shape"] = f"oobb_cube"
     w = 10
-    h = 4
+    h = 5
     d = depth_extra_piece
     p3["size"] = [w,h,d]
     p3["m"] = "#"
