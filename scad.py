@@ -13,7 +13,7 @@ def make_scad(**kwargs):
 
     # save_type variables
     if True:
-        #filter = ""
+        filter = ""
         #filter = "holder"
 
         kwargs["save_type"] = "none"
@@ -461,7 +461,7 @@ def add_mechanical_motor_geared_n20_holder(thing, **kwargs):
     h = 25
     d = 10
     p3["size"] = [w,h,d]
-    p3["m"] = "#"
+    #p3["m"] = "#"
     pos1 = copy.deepcopy(pos)
     pos1[0] += 0
     pos1[1] += -((width*15)-1) / 2 + h/2 + 1
@@ -477,7 +477,7 @@ def add_mechanical_motor_geared_n20_holder(thing, **kwargs):
     h = 29
     d = d-1
     p3["size"] = [w,h,d]
-    p3["m"] = "#"
+    #p3["m"] = "#"
     pos1 = copy.deepcopy(pos)
     pos1[0] += 0
     pos1[1] += -7.5
@@ -486,6 +486,21 @@ def add_mechanical_motor_geared_n20_holder(thing, **kwargs):
     oobb_base.append_full(thing,**p3)
 
 
+    #cube for back clearance
+    p3 = copy.deepcopy(kwargs)
+    p3["type"] = "n"
+    p3["shape"] = f"oobb_cube"
+    w = 10
+    h = 4
+    d = depth_extra_piece
+    p3["size"] = [w,h,d]
+    p3["m"] = "#"
+    pos1 = copy.deepcopy(pos)
+    pos1[0] += position_holder[0]
+    pos1[1] += position_holder[1] + 27.5
+    pos1[2] += depth
+    p3["pos"] = pos1
+    oobb_base.append_full(thing,**p3)
 
 
     return thing
