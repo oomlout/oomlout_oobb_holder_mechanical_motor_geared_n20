@@ -1,0 +1,9 @@
+Here's my first post to MakerWorld!
+
+It is for a variety of holders for N20 gearmotors. It takes an N20 gearmotor and puts an oobb compatible set of mounting holes around it.
+
+This design is hosted and updated on github, take a look there for any changes, or if you'd like to customize or contribute.
+
+https://github.com/oomlout/oomlout_oobb_holder_mechanical_motor_geared_n20
+
+More details to follow!
